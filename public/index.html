@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extend System API Documentation</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 1000px; margin: 0 auto; padding: 20px; background: #f4f7f6; }
+        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #2980b9; margin-top: 30px; }
+        .endpoint { background: #fff; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 20px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .endpoint-header { padding: 15px; background: #f8f9fa; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #eee; flex-wrap: wrap; }
+        .method { font-weight: bold; padding: 4px 8px; border-radius: 4px; font-size: 0.8em; color: white; min-width: 60px; text-align: center; flex-shrink: 0; }
+        .method.get { background: #61affe; }
+        .method.post { background: #49cc90; }
+        .method.put { background: #fca130; }
+        .method.delete { background: #f93e3e; }
+        .path { font-family: monospace; font-size: 1.1em; color: #d63384; flex-grow: 1; }
+        .details { padding: 15px; }
+        .params { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .params th, .params td { text-align: left; padding: 8px; border-bottom: 1px solid #eee; }
+        .params th { background: #f2f2f2; font-size: 0.9em; }
+        .tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.75em; background: #e0e0e0; margin-left: 10px; }
+        .required { color: #e74c3c; font-weight: bold; }
+        .fetch-data-btn { padding: 10px 20px; background: #27ae60; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1em; font-weight: 600; transition: background 0.3s ease; margin-bottom: 20px; }
+        .fetch-data-btn:hover { background: #229954; }
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); overflow: auto; }
+        .modal-content { background-color: #f4f7f6; margin: auto; padding: 20px; width: 90%; max-width: 1200px; margin-top: 50px; border-radius: 8px; max-height: 80vh; overflow-y: auto; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .modal-header h2 { margin: 0; color: #2c3e50; }
+        .close-modal { background: #e74c3c; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: 600; }
+        .close-modal:hover { background: #c0392b; }
+        .json-display { background: #2c3e50; color: #2ecc71; padding: 15px; border-radius: 4px; font-family: monospace; font-size: 0.9em; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word; }
+        .data-section { margin-bottom: 30px; border: 1px solid #ddd; border-radius: 4px; padding: 15px; background: white; }
+        .data-section h3 { color: #2980b9; margin-top: 0; }
+        footer { margin-top: 50px; text-align: center; color: #7f8c8d; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+
+    <h1>Extend System API Documentation</h1>
+    <p>All API requests should be prefixed with <code>/api</code>. Timezone is set to <strong>Asia/Phnom_Penh</strong>.</p>
+    <button class="fetch-data-btn" onclick="openDataViewer()"> View All Database Data</button>
+
+    <h2>Authentication API</h2>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method post">POST</span>
+            <span class="path">/api/register</span>
+        </div>
+        <div class="details"><p>Register a new user.</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method post">POST</span>
+            <span class="path">/api/login</span>
+        </div>
+        <div class="details"><p>Login user and receive authentication token.</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method post">POST</span>
+            <span class="path">/api/logout</span>
+        </div>
+        <div class="details"><p>Logout user (requires authentication).</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method get">GET</span>
+            <span class="path">/api/profile</span>
+        </div>
+        <div class="details"><p>Get user profile (requires authentication).</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method put">PUT</span>
+            <span class="path">/api/profile</span>
+        </div>
+        <div class="details"><p>Update user profile (requires authentication).</p></div>
+    </div>
+
+    <!-- Categories -->
+    <h2>Categories API</h2>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method get">GET</span>
+            <span class="path">/api/categories</span>
+        </div>
+        <div class="details">
+            <p>List all categories.</p>
+            <table class="params">
+                <tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr>
+                 <tr><td>type</td><td>string</td><td>No</td><td>Filter by <code>income</code>, <code>expense</code>, or <code>saving</code></td></tr>
+            </table>
+        </div>
+    </div>
+
+     <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method get">GET</span>
+            <span class="path">/api/categories/expense</span>
+        </div>
+        <div class="details"><p>List all expense categories.</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method get">GET</span>
+            <span class="path">/api/categories/income</span>
+        </div>
+        <div class="details"><p>List all income categories.</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method get">GET</span>
+            <span class="path">/api/categories/saving</span>
+        </div>
+        <div class="details"><p>List all saving categories.</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method get">GET</span>
+            <span class="path">/api/categories/{id}</span>
+        </div>
+        <div class="details"><p>Get a specific category by ID.</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method post">POST</span>
+            <span class="path">/api/categories</span>
+        </div>
+        <div class="details">
+            <p>Create a new category (requires authentication).</p>
+            <table class="params">
+                <tr><th>Key</th><th>Type</th><th>Required</th><th>Default / Options</th></tr>
+                <tr><td>name</td><td>string</td><td><span class="required">Yes</span></td><td>Category name</td></tr>
+                <tr><td>type</td><td>string</td><td><span class="required">Yes</span></td><td><code>income</code>, <code>expense</code>, <code>saving</code></td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method put">PUT</span>
+            <span class="path">/api/categories/{id}</span>
+        </div>
+        <div class="details"><p>Update a category (requires authentication).</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method delete">DELETE</span>
+            <span class="path">/api/categories/{id}</span>
+        </div>
+        <div class="details"><p>Delete a category (requires authentication).</p></div>
+    </div>
+
+    <!-- Incomes -->
+    <h2>Incomes API</h2>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method get">GET</span>
+            <span class="path">/api/incomes</span>
+        </div>
+        <div class="details"><p>Fetch all income records with categories (requires authentication).</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method post">POST</span>
+            <span class="path">/api/incomes</span>
+        </div>
+        <div class="details">
+            <p>Add a new income record (requires authentication).</p>
+            <table class="params">
+                <tr><th>Key</th><th>Type</th><th>Required</th><th>Description</th></tr>
+                <tr><td>amount</td><td>numeric</td><td><span class="required">Yes</span></td><td>The decimal amount</td></tr>
+                <tr><td>description</td><td>string</td><td><span class="required">Yes</span></td><td>Short note</td></tr>
+                <tr><td>date</td><td>date</td><td><span class="required">Yes</span></td><td>YYYY-MM-DD</td></tr>
+                <tr><td>category_id</td><td>integer</td><td>No</td><td>ID from Categories table</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method get">GET</span>
+            <span class="path">/api/incomes/{id}</span>
+        </div>
+        <div class="details"><p>Get a specific income record (requires authentication).</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method put">PUT</span>
+            <span class="path">/api/incomes/{id}</span>
+        </div>
+        <div class="details"><p>Update existing income record - all fields optional (requires authentication).</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method delete">DELETE</span>
+            <span class="path">/api/incomes/{id}</span>
+        </div>
+        <div class="details"><p>Delete an income record (requires authentication).</p></div>
+    </div>
+
+    <!-- Expenses -->
+    <h2>Expenses API</h2>
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method get">GET</span>
+            <span class="path">/api/expenses</span>
+        </div>
+        <div class="details"><p>Fetch all expense records (requires authentication).</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method post">POST</span>
+            <span class="path">/api/expenses</span>
+        </div>
+        <div class="details">
+            <p>Add a new expense record (requires authentication).</p>
+            <table class="params">
+                <tr><th>Key</th><th>Type</th><th>Required</th><th>Description</th></tr>
+                <tr><td>amount</td><td>numeric</td><td><span class="required">Yes</span></td><td>Amount spent</td></tr>
+                <tr><td>description</td><td>string</td><td><span class="required">Yes</span></td><td>Short note</td></tr>
+                <tr><td>date</td><td>date</td><td><span class="required">Yes</span></td><td>YYYY-MM-DD</td></tr>
+                <tr><td>category_id</td><td>integer</td><td>No</td><td>ID from Categories table</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method get">GET</span>
+            <span class="path">/api/expenses/{id}</span>
+        </div>
+        <div class="details"><p>Get a specific expense record (requires authentication).</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method put">PUT</span>
+            <span class="path">/api/expenses/{id}</span>
+        </div>
+        <div class="details"><p>Update an expense record (requires authentication).</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method delete">DELETE</span>
+            <span class="path">/api/expenses/{id}</span>
+        </div>
+        <div class="details"><p>Delete an expense record (requires authentication).</p></div>
+    </div>
+
+    <!-- Savings -->
+    <h2>Savings API</h2>
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method get">GET</span>
+            <span class="path">/api/savings</span>
+        </div>
+        <div class="details"><p>Fetch all saving records (requires authentication).</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method post">POST</span>
+            <span class="path">/api/savings</span>
+        </div>
+        <div class="details"><p>Add a new saving record (requires authentication).</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method get">GET</span>
+            <span class="path">/api/savings/{id}</span>
+        </div>
+        <div class="details"><p>Get a specific saving record (requires authentication).</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method put">PUT</span>
+            <span class="path">/api/savings/{id}</span>
+        </div>
+        <div class="details"><p>Update a saving record (requires authentication).</p></div>
+    </div>
+
+    <div class="endpoint">
+        <div class="endpoint-header">
+            <span class="method delete">DELETE</span>
+            <span class="path">/api/savings/{id}</span>
+        </div>
+        <div class="details"><p>Delete a saving record (requires authentication).</p></div>
+    </div>
+
+    <!-- Reports -->
+    <h2>Reports API (Cambodia Time)</h2>
+    <div class="endpoint">
+        <div class="endpoint-header"><span class="method get">GET</span><span class="path">/api/reports/daily</span></div>
+        <div class="details"><p>Get daily report (requires authentication).</p></div>
+    </div>
+    <div class="endpoint">
+        <div class="endpoint-header"><span class="method get">GET</span><span class="path">/api/reports/weekly</span></div>
+        <div class="details"><p>Get weekly report (requires authentication).</p></div>
+    </div>
+    <div class="endpoint">
+        <div class="endpoint-header"><span class="method get">GET</span><span class="path">/api/reports/monthly</span></div>
+        <div class="details"><p>Get monthly report (requires authentication).</p></div>
+    </div>
+
+    
+
+    <footer>
+        &copy; 2026 Extend System - Cambodia Time Implementation
+    </footer>
+
+    <!-- Data Viewer Modal -->
+    <div id="dataModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📊 Database Data Viewer</h2>
+                <button class="close-modal" onclick="closeDataViewer()">Close</button>
+            </div>
+            <div id="dataContent"></div>
+        </div>
+    </div>
+
+    <script>
+        function openDataViewer() {
+            const modal = document.getElementById('dataModal');
+            const dataContent = document.getElementById('dataContent');
+
+            if (!modal) {
+                alert('Modal not found! Creating it now...');
+                return;
+            }
+
+            dataContent.innerHTML = '<p style="text-align: center; color: #7f8c8d;">⏳ Loading database data...</p>';
+            modal.style.display = 'block';
+
+            setTimeout(fetchAllData, 100);
+        }
+
+        function closeDataViewer() {
+            const modal = document.getElementById('dataModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        async function fetchAllData() {
+            const baseUrl = window.location.origin;
+            const dataContent = document.getElementById('dataContent');
+
+            if (!dataContent) {
+                console.error('Data content element not found');
+                return;
+            }
+
+            const endpoints = [
+                { name: 'Categories', url: '/api/categories' },
+                { name: 'Incomes', url: '/api/incomes' },
+                { name: 'Expenses', url: '/api/expenses' },
+                { name: 'Savings', url: '/api/savings' }
+            ];
+
+            let htmlContent = '';
+
+            for (const endpoint of endpoints) {
+                try {
+                    const response = await fetch(baseUrl + endpoint.url);
+                    let data;
+
+                    if (!response.ok) {
+                        data = { error: `HTTP ${response.status}: ${response.statusText}` };
+                    } else {
+                        data = await response.json();
+                    }
+
+                    htmlContent += `
+                        <div class="data-section">
+                            <h3>📦 ${endpoint.name}</h3>
+                            <div class="json-display">${JSON.stringify(data, null, 2)}</div>
+                        </div>
+                    `;
+                } catch (error) {
+                    htmlContent += `
+                        <div class="data-section">
+                            <h3>⚠️ ${endpoint.name}</h3>
+                            <div class="json-display">Error: ${error.message}</div>
+                        </div>
+                    `;
+                }
+            }
+
+            if (!htmlContent) {
+                htmlContent = '<p>No data loaded</p>';
+            }
+
+            dataContent.innerHTML = htmlContent;
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('dataModal');
+            if (modal && event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>
