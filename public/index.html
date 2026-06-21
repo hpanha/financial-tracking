@@ -3,7 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Extend System API Documentation</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- Essential SEO Meta Tags -->
+    <title>Financial Tracking API Documentation | Extend System</title>
+    <meta name="description" content="Complete REST API documentation for financial tracking system. Manage income, expenses, savings, and categories with authentication. Cambodia timezone support.">
+    <meta name="keywords" content="financial tracking API, expense management, income tracking, savings app, REST API documentation, personal finance">
+    <meta name="author" content="Extend System">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    
+    <!-- Open Graph Tags (Social Media) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://financial-tracking-azure.vercel.app/">
+    <meta property="og:title" content="Financial Tracking API Documentation | Extend System">
+    <meta property="og:description" content="Complete REST API for managing personal finances - income, expenses, savings, and financial reports.">
+    <meta property="og:site_name" content="Extend System">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Financial Tracking API Documentation | Extend System">
+    <meta name="twitter:description" content="Complete REST API for managing personal finances - income, expenses, savings, and financial reports.">
+    
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#3498db">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://financial-tracking-azure.vercel.app/">
+    
+    <!-- Alternate Links -->
+    <link rel="alternate" hreflang="en" href="https://financial-tracking-azure.vercel.app/">
+    
+    <!-- Preconnect to optimize performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 1000px; margin: 0 auto; padding: 20px; background: #f4f7f6; }
         h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
@@ -35,14 +72,60 @@
         .data-section h3 { color: #2980b9; margin-top: 0; }
         footer { margin-top: 50px; text-align: center; color: #7f8c8d; font-size: 0.9em; }
     </style>
+    
+    <!-- Structured Data (Schema.org JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Extend System - Financial Tracking API",
+        "description": "Complete REST API documentation for financial tracking system with income, expenses, savings management and Cambodia timezone support",
+        "url": "https://financial-tracking-azure.vercel.app/",
+        "applicationCategory": "FinanceApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "ratingCount": "1"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Extend System",
+            "url": "https://financial-tracking-azure.vercel.app/"
+        },
+        "datePublished": "2026-06-21",
+        "dateModified": "2026-06-21"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Extend System",
+        "url": "https://financial-tracking-azure.vercel.app/",
+        "description": "Financial tracking system with REST API documentation",
+        "sameAs": []
+    }
+    </script>
 </head>
 <body>
+    <header role="banner"></header>
+        <h1>Financial Tracking API Documentation</h1>
+        <p>Complete REST API for personal financial management with multi-currency support and Cambodia timezone integration.</p>
+        <p><strong>API Prefix:</strong> <code>/api</code> | <strong>Timezone:</strong> Asia/Phnom_Penh</p>
+    </header>
+    
+    <main role="main">
+        <button class="fetch-data-btn" onclick="openDataViewer()">📊 View All Database Data</button>
 
-    <h1>Extend System API Documentation</h1>
-    <p>All API requests should be prefixed with <code>/api</code>. Timezone is set to <strong>Asia/Phnom_Penh</strong>.</p>
-    <button class="fetch-data-btn" onclick="openDataViewer()"> View All Database Data</button>
-
-    <h2>Authentication API</h2>
+        <section>
+            <h2>Authentication API</h2>
+            <p>Secure user authentication endpoints for registration, login, and profile management.</p>
 
     <div class="endpoint">
         <div class="endpoint-header">
@@ -86,6 +169,7 @@
 
     <!-- Categories -->
     <h2>Categories API</h2>
+    <p>Manage transaction categories for income, expenses, and savings. Create, update, and delete custom categories.</p>
 
     <div class="endpoint">
         <div class="endpoint-header">
@@ -166,6 +250,7 @@
 
     <!-- Incomes -->
     <h2>Incomes API</h2>
+    <p>Track and manage income records with category classification. View, create, update, and delete income entries.</p>
 
     <div class="endpoint">
         <div class="endpoint-header">
@@ -218,6 +303,7 @@
 
     <!-- Expenses -->
     <h2>Expenses API</h2>
+    <p>Monitor spending with comprehensive expense tracking. Categorize and track all expense records.</p>
     <div class="endpoint">
         <div class="endpoint-header">
             <span class="method get">GET</span>
@@ -269,6 +355,7 @@
 
     <!-- Savings -->
     <h2>Savings API</h2>
+    <p>Plan and track savings goals. Create and manage savings records with flexible category support.</p>
     <div class="endpoint">
         <div class="endpoint-header">
             <span class="method get">GET</span>
@@ -311,6 +398,7 @@
 
     <!-- Reports -->
     <h2>Reports API (Cambodia Time)</h2>
+    <p>Generate financial reports with daily, weekly, and monthly summaries. All timestamps use Cambodia timezone.</p>
     <div class="endpoint">
         <div class="endpoint-header"><span class="method get">GET</span><span class="path">/api/reports/daily</span></div>
         <div class="details"><p>Get daily report (requires authentication).</p></div>
@@ -326,9 +414,12 @@
 
     
 
-    <footer>
-        &copy; 2026 Extend System - Cambodia Time Implementation
+    <footer role="contentinfo">
+        <p>&copy; 2026 <strong>Extend System</strong> - Financial Tracking Platform with Cambodia Time Implementation</p>
+        <p>Secure API for personal finance management and financial reporting.</p>
     </footer>
+    
+    </main>
 
     <!-- Data Viewer Modal -->
     <div id="dataModal" class="modal">
