@@ -10,6 +10,7 @@ class SavingController extends Controller
     public function index(Request $request)
     {
         $query = Saving::query();
+        
         if ($request->has('category_id')) {
             $query->where('category_id', $request->category_id);
         }
