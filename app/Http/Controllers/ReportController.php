@@ -16,18 +16,18 @@ class ReportController extends Controller
                 return response()->json(['message' => 'Unauthorized - no user', 'error' => 'Please login first'], 401);
             }
             $userId = $request->user()->id;
-            $today = Carbon::today()->toDateString();
+            $date = $request->query('date', Carbon::today()->toDateString());
             
             $income = Income::where('user_id', $userId)
-                ->whereDate('date', $today)
+                ->whereDate('date', $date)
                 ->sum('amount');
             $expense = Expense::where('user_id', $userId)
-                ->whereDate('date', $today)
+                ->whereDate('date', $date)
                 ->sum('amount');
             
             return response()->json([
                 'report_type' => 'daily',
-                'date' => $today,
+                'date' => $date,
                 'total_income' => (float)$income,
                 'total_expense' => (float)$expense,
                 'balance' => (float)($income - $expense)
@@ -44,8 +44,10 @@ class ReportController extends Controller
                 return response()->json(['message' => 'Unauthorized - no user', 'error' => 'Please login first'], 401);
             }
             $userId = $request->user()->id;
-            $startOfWeek = Carbon::now()->startOfWeek();
-            $endOfWeek = Carbon::now()->endOfWeek();
+            $dateStr = $request->query('date', Carbon::today()->toDateString());
+            $carbonDate = Carbon::parse($dateStr);
+            $startOfWeek = $carbonDate->copy()->startOfWeek();
+            $endOfWeek = $carbonDate->copy()->endOfWeek();
             
             $income = Income::where('user_id', $userId)
                 ->whereBetween('date', [$startOfWeek, $endOfWeek])
@@ -74,8 +76,10 @@ class ReportController extends Controller
                 return response()->json(['message' => 'Unauthorized - no user', 'error' => 'Please login first'], 401);
             }
             $userId = $request->user()->id;
-            $startOfMonth = Carbon::now()->startOfMonth();
-            $endOfMonth = Carbon::now()->endOfMonth();
+            $dateStr = $request->query('date', Carbon::today()->toDateString());
+            $carbonDate = Carbon::parse($dateStr);
+            $startOfMonth = $carbonDate->copy()->startOfMonth();
+            $endOfMonth = $carbonDate->copy()->endOfMonth();
             
             $income = Income::where('user_id', $userId)
                 ->whereBetween('date', [$startOfMonth, $endOfMonth])
@@ -86,7 +90,7 @@ class ReportController extends Controller
             
             return response()->json([
                 'report_type' => 'monthly',
-                'month' => Carbon::now()->format('F Y'),
+                'month' => $carbonDate->format('F Y'),
                 'total_income' => (float)$income,
                 'total_expense' => (float)$expense,
                 'balance' => (float)($income - $expense)

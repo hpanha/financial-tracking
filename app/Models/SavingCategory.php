@@ -17,7 +17,7 @@ class SavingCategory extends Model
         'unit',
         'frequency',
         'icon',
-        'purpose',
+        'purpose_id',
     ];
 
     protected $casts = [
